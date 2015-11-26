@@ -12,6 +12,9 @@
 
 + (UIViewController *)presentationContorller    {
     UIViewController *presentationContorller = [UIApplication sharedApplication].keyWindow.rootViewController;
+    if (presentationContorller == nil) {
+        presentationContorller = [[[UIApplication sharedApplication] windows] firstObject].rootViewController;
+    }
     
     if (![presentationContorller isMemberOfClass:[UIViewController class]]) {
         if ([presentationContorller isKindOfClass:[UITabBarController class]]) {
